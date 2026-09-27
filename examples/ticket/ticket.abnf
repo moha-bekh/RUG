@@ -1,0 +1,18 @@
+start = *ticket
+
+ticket = *WSP name-stmt *WSP surname-stmt [CRLF]
+
+name-stmt = "name:" *WSP name *WSP ";"
+surname-stmt = "surname:" *WSP surname *WSP ";"
+
+name = 1*ALPHA
+surname = 1*ALPHA
+
+ALPHA = %x41-5A / %x61-7A
+WSP   = SP / HTAB
+SP    = %x20
+HTAB  = %x09
+
+CRLF			= (CR LF) / LF
+CR				= %x0D
+LF				= %x0A

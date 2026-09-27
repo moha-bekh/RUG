@@ -1,0 +1,33 @@
+start  = wsp expression
+
+expression = expression add-op term / term
+
+add-op = "+" wsp / "-" wsp
+
+term = term mul-op unary / unary
+
+mul-op = "*" wsp / "/" wsp / "%" wsp
+
+unary = "+" wsp unary / "-" wsp unary / primary
+
+primary = number / "(" wsp expression ")" wsp
+
+number = numeric wsp
+
+numeric = integer [fraction] [exponent]
+
+integer = "0" / non-zero-digit *DIGIT
+
+fraction = "." 1*DIGIT
+
+exponent = "e" [sign] 1*DIGIT
+
+sign = "+" / "-"
+
+non-zero-digit = %x31-39
+DIGIT = %x30-39
+
+wsp = *(SP / HTAB)
+
+SP = %x20
+HTAB = %x09
